@@ -10,6 +10,16 @@
 
   }
   
+button.search{
+  display: grid;
+    column-gap: 5px;
+    row-gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 100px));
+    margin-top: 50px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
   input[type="text"] {
     border: solid 5px rgba(16, 9, 9, 0.043);
     padding: 10px;
@@ -19,11 +29,27 @@
     width: 30%;
   }
   
-  button {
+  .typeFuoco{
     padding: 10px;
     border: solid 1px var(--primary-color);
-    background: rgb(205, 63, 63);
-    color: rgb(107, 99, 190);
+    background: rgb(255, 0, 0);
+    color: black;
+    border-radius: 8px;
+  }
+
+  .typeAcqua{
+    padding: 10px;
+    border: solid 1px var(--primary-color);
+    background: rgb(0, 0, 255);
+    color: black;
+    border-radius: 8px;
+  }
+
+  .typeErba{
+    padding: 10px;
+    border: solid 1px var(--primary-color);
+    background: rgb(0, 255, 0);
+    color: black;
     border-radius: 8px;
   }
   

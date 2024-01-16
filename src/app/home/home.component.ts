@@ -15,6 +15,15 @@ import { CommonModule } from '@angular/common';
     imports: [PokemonComponent,CommonModule]
 })
 export class HomeComponent {
+
+filterType(tipo: string) {
+  if(!tipo){
+    this.ricercaPokemon = this.pokemonList
+    return
+  }
+  this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.type===tipo)
+}
+
 filterResults(pokemon: string) {
   if(!pokemon){
     this.ricercaPokemon = this.pokemonList
