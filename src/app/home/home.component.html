@@ -1,7 +1,6 @@
 <section>
     <form>
-      <input type="text" placeholder="Filtra per pokemon" #filter>
-      <button class="primary" type="button" (click)="filterResults(filter.value)">Cerca</button>
+      <input type="text" placeholder="Filtra per pokemon" (keyup)="filterResults(filter.value)" #filter>
     </form>
 </section>
 <section class="results">
