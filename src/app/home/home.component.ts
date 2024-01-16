@@ -3,6 +3,8 @@ import { PokemonInt } from './../pokemon-int';
 import { Component,inject } from '@angular/core';
 import { PokemonComponent } from "../pokemon/pokemon.component";
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
