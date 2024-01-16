@@ -1,7 +1,6 @@
-
-<section *ngIf="pokemonInt" class="listing">
-    <img class="listing-photo" alt="pokemon" [src]="pokemonInt.foto" >
-    <h2 class="listing-heading">Nome pokemon:{{ pokemonInt.name }}</h2>
+<section class="listing">
+    <a [routerLink]="['/pokemon',pokemonInt.id]"><img class="listing-photo" alt="pokemon" [src]="pokemonInt.foto" >
+    <h2 class="listing-heading">Pokemon: {{ pokemonInt.name }}</h2>
     <p class="listing-location">{{ pokemonInt.id}}</p>
-    <p>Tipo pokemon:{{pokemonInt.type}}</p>
+    <p>Tipo pokemon:{{pokemonInt.type}}</p></a>
 </section>

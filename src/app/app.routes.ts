@@ -1,16 +1,17 @@
 import { Routes } from '@angular/router';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { DetailsComponent } from './details/details.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routeConfig: Routes = [
   {
     path: '',
-    component: PokemonComponent,
+    component: HomeComponent,
     title: 'Home page'
   },
   {
-    path: 'details/:id',
+    path: 'pokemon/:id',
     component: DetailsComponent,
     title: 'Home details'
   }
