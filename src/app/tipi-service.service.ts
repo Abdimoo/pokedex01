@@ -8,9 +8,8 @@ import { TypePokemon } from './type-pokemon';
 })
 
 export class TipiServiceService {
-  apiUrl =''
 
-  constructor(private http:HttpClient) { }
+  constructor() { }
 
   getAllType(): TypePokemon[]{
     return this.tipoLista
