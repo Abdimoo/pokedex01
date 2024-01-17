@@ -10,6 +10,32 @@
 
   }
   
+.container{
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  float: left;
+  ali: center;
+}
+
+.roundy{
+  display:block;
+  float:left;
+  text-align: center;
+  background: #fff;
+  padding: 3px;
+  border: 2px solid #aaaaff;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+img.type{
+  margin: 0 5px 0 10px;
+  display: inline-block;
+  min-width: 50px;
+  text-align: center;
+}
+
+
+
 button.search{
   display: grid;
     column-gap: 5px;
@@ -29,29 +55,22 @@ button.search{
     width: 30%;
   }
   
-  .typeFuoco{
-    padding: 10px;
-    border: solid 1px var(--primary-color);
-    background: rgb(255, 0, 0);
-    color: black;
-    border-radius: 8px;
-  }
-
-  .typeAcqua{
-    padding: 10px;
-    border: solid 1px var(--primary-color);
-    background: rgb(0, 0, 255);
-    color: black;
-    border-radius: 8px;
-  }
-
-  .typeErba{
-    padding: 10px;
-    border: solid 1px var(--primary-color);
-    background: rgb(0, 255, 0);
-    color: black;
-    border-radius: 8px;
-  }
+  .type{
+    background-color: #5A5A5A;
+    padding: 2px 2px 2px 4px;
+    margin: 2px;
+    width: 110px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    -icab-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: inline-flex;
+    white-space: nowrap;
+    align-items: center;
+          
+}
   
   @media (min-width: 500px) and (max-width: 768px) {
     .results {

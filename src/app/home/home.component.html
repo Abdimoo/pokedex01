@@ -1,12 +1,24 @@
 <section>
-    <form class="search">
-      <input type="text" placeholder="Filtra per pokemon" (keydown)="filterResults(filter.value)"#filter>
-      <button class="typeFuoco" type="button" (click)="filterType('Fire')">Fuoco</button>
-      <button class="typeErba" type="button" (click)="filterType('Grass')">Erba</button>
-      <button class="typeAcqua" type="button" (click)="filterType('Water')">Acqua</button>
-    </form>
+  <form class="search">
+    <input type="text" placeholder="Filtra per pokemon" (keydown)="filterResults(filter.value)" #filter/>
+  </form>
+  <br />
+  <span class="roundy">
+    <span class="title">Filtro pokemon tramite tipo</span>
+    <div class="container">
+      <td *ngFor="let typeVar of typeList">
+        <a (click)="filterType(typeVar.id)">
+          <span class="type" [style.background-image]="'linear-gradient(105deg,' + typeVar.rgb +' 30px,#5A5A5A 31px,#5A5A5A)'">
+            <img [alt]="typeVar.id+'icon.png'" [src]="'../assets/icons/'+typeVar.id+'.svg'" width="20" height="20"/>
+            <span>
+              <span style="color: #fff;padding-left: 10px;">{{typeVar.type}}</span>
+            </span>
+          </span>
+        </a>
+      </td>
+    </div>
+  </span>
 </section>
 <section class="results">
-    <app-pokemon *ngFor="let pokemonVar of ricercaPokemon"  [pokemonInt]="pokemonVar">
-    </app-pokemon>
+  <app-pokemon *ngFor="let pokemonVar of ricercaPokemon" [pokemonInt]="pokemonVar"></app-pokemon>
 </section>
