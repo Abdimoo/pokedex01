@@ -22,71 +22,71 @@ export class TipiServiceService {
   },{
     id:"fighting",
     type:"Lotta",
-    rgb:""
+    rgb:"#C03028"
   },{
     id:"flying",
     type:"Volante",
-    rgb:""
+    rgb:"#A890F0"
   },{
     id:"poison",
     type:"Veleno",
-    rgb:""
+    rgb:"#A040A0"
   },{
     id:"ground",
     type:"Terra",
-    rgb:""
+    rgb:"#E0C068"
   },{
     id:"rock",
     type:"Roccia",
-    rgb:""
+    rgb:"#B8A038"
   },{
     id:"bug",
     type:"Coleottero",
-    rgb:""
+    rgb:"#A8B820"
   },{
     id:"ghost",
     type:"Spettro",
-    rgb:""
+    rgb:"#705898"
   },{
     id:"steel",
     type:"Acciaio",
-    rgb:""
+    rgb:"#B8B8D0"
   },{
     id:"fire",
     type:"Fuoco",
-    rgb:""
+    rgb:"#F08030"
   },{
     id:"water",
     type:"Acqua",
-    rgb:""
+    rgb:"#6890F0"
   },{
     id:"grass",
     type:"Erba",
-    rgb:""
+    rgb:"#78C850"
   },{
     id:"electric",
     type:"Elettro",
-    rgb:""
+    rgb:"#F8D030"
   },{
     id:"psychic",
     type:"Psico",
-    rgb:""
+    rgb:"#F85888"
   },{
     id:"ice",
     type:"Ghiaccio",
-    rgb:""
+    rgb:"#98D8D8"
   },{
     id:"dragon",
     type:"Drago",
-    rgb:""
+    rgb:"#7038F8"
   },{
     id:"dark",
     type:"Buio",
-    rgb:""
+    rgb:"#705848"
   },{
     id:"fairy",
     type:"Folletto",
-    rgb:""
+    rgb:"#EE99AC"
   }
 ]
 }

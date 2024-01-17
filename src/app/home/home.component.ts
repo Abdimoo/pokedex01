@@ -24,7 +24,8 @@ filterType(tipo: string) {
     this.ricercaPokemon = this.pokemonList
     return
   }
-  this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.type[0].toLowerCase().includes(tipo)/*||PokemonInt?.type[1].toLowerCase().includes(tipo.toLowerCase())*/)
+  this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.type.includes(tipo.toLowerCase()))
+  console.log(tipo)
 }
 
 filterResults(pokemon: string) {
