@@ -21,7 +21,7 @@ filterType(tipo: string) {
     this.ricercaPokemon = this.pokemonList
     return
   }
-  this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.type===tipo)
+  this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.type[0]===tipo||PokemonInt?.type[1]===tipo)
 }
 
 filterResults(pokemon: string) {
