@@ -1,3 +1,4 @@
+import { TipiServiceService } from './../tipi-service.service';
 import { CommonModule } from '@angular/common';
 import { PokemonInt } from './../pokemon-int';
 import { Component,Input } from '@angular/core';
@@ -14,5 +15,4 @@ import routeConfig from '../app.routes';
 })
 export class PokemonComponent {
   @Input() pokemonInt!: PokemonInt;
-
 }
