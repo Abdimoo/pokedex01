@@ -35,16 +35,25 @@ filterResults(pokemon: string) {
   }
   this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.name.toLowerCase().includes(pokemon.toLowerCase()))
 }
+
   pokemonList: PokemonInt[] = []
   pokemonSer: PokemonSerService = inject(PokemonSerService)
   typeList:TypePokemon[]=[]
   typeSer: TipiServiceService = inject(TipiServiceService)
+  display:PokemonInt[] = []
 
   constructor(){
     this.pokemonList = this.pokemonSer.getAllPokemon()
     this.ricercaPokemon= this.pokemonList
     this.typeList = this.typeSer.getAllType()
+    this.display = this.ricercaPokemon.slice(0,20)
   }
 
-  
+  showMore(){
+    let newLength = this.display.length + 20;
+    if (newLength > this.ricercaPokemon.length) {
+        newLength = this.ricercaPokemon.length
+    }
+     this.display = this.ricercaPokemon.slice(0, newLength);
+  }
 }

@@ -25,3 +25,20 @@
     text-decoration: none;
     color: var(--primary-color);
   }
+
+  .type{
+    background-color: #5A5A5A;
+    padding: 2px 2px 2px 4px;
+    margin: 2px;
+    width: 110px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    -icab-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: inline-flex;
+    white-space: nowrap;
+    align-items: center;
+          
+}

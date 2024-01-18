@@ -20,5 +20,6 @@
   </span>
 </section>
 <section class="results">
-  <app-pokemon *ngFor="let pokemonVar of ricercaPokemon" [pokemonInt]="pokemonVar"></app-pokemon>
+  <app-pokemon *ngFor="let pokemonVar of display" [pokemonInt]="pokemonVar"></app-pokemon>
 </section>
+<button style="display: block;" (click)="showMore()">Mostra più pokemon</button>
