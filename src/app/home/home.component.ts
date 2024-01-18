@@ -1,10 +1,11 @@
 import { PokemonSerService } from './../pokemon-ser.service';
 import { PokemonInt } from './../pokemon-int';
-import { Component,inject } from '@angular/core';
+import { Component,NgModule,inject } from '@angular/core';
 import { PokemonComponent } from "../pokemon/pokemon.component";
 import { CommonModule } from '@angular/common';
 import { TypePokemon } from '../type-pokemon';
 import { TipiServiceService } from '../tipi-service.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,12 +15,17 @@ import { TipiServiceService } from '../tipi-service.service';
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports: [PokemonComponent, CommonModule]
+    imports: [PokemonComponent, CommonModule,FormsModule]
 })
+
+
 export class HomeComponent {
   ricercaPokemon: PokemonInt[] = []
   moreButton?:boolean
+filter: string=""
+
 filterType(tipo: string) {
+  this.filter=""
   if(!tipo){
     this.ricercaPokemon = this.pokemonList
     return
@@ -27,6 +33,7 @@ filterType(tipo: string) {
   this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.type.includes(tipo.toLowerCase()))
   this.display=this.ricercaPokemon.slice(0,20)
   this.moreButton=true
+  
 }
 
 reset(){
@@ -35,6 +42,7 @@ reset(){
     this.typeList = this.typeSer.getAllType()
     this.display = this.ricercaPokemon.slice(0,20)
     this.moreButton=true
+    this.filter=""
 }
 
 filterResults(pokemon: string) {

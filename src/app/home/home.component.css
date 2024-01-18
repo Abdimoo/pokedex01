@@ -39,16 +39,6 @@ img.type{
   text-align: center;
 }
 
-button.search{
-  display: grid;
-    column-gap: 5px;
-    row-gap: 5px;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 100px));
-    margin-top: 50px;
-    border-radius: 8px;
-    padding: 10px;
-}
-
   input[type="text"] {
     border: solid 5px rgba(16, 9, 9, 0.043);
     padding: 10px;
