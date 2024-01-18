@@ -1,9 +1,8 @@
 <div class="contenitore" style="display: flex;flex-direction: column;">
 
 <section>
-  <form class="search">
-    <input type="text" placeholder="Filtra per pokemon" (keypress)="filterResults(filter.value)" #filter/>
-  </form>
+  <input type="text" placeholder="Filtra per pokemon" (keypress)="filterResults(filter.value)" #filter/>
+  <button type="reset" (click)="reset()">reset</button>
   <br />
   <span class="roundy">
     <span class="title">Filtro pokemon tramite tipo</span>

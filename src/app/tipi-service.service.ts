@@ -15,6 +15,7 @@ export class TipiServiceService {
     return this.tipoLista
   }
 
+  
   tipoLista:TypePokemon[] = [{
     id:"normal",
     type:"Normale",

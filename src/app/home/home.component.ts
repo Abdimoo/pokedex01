@@ -25,26 +25,26 @@ filterType(tipo: string) {
     return
   }
   this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.type.includes(tipo.toLowerCase()))
-  if(this.ricercaPokemon.length<20){
-    this.moreButton=true
-  } else {
-    this.moreButton=false
-  }
-  //this.reset()
+  this.display=this.ricercaPokemon.slice(0,20)
+  this.moreButton=true
 }
 
 reset(){
-  this.display = this.ricercaPokemon.slice(0,20)
+  this.pokemonList = this.pokemonSer.getAllPokemon()
+    this.ricercaPokemon= this.pokemonList
+    this.typeList = this.typeSer.getAllType()
+    this.display = this.ricercaPokemon.slice(0,20)
+    this.moreButton=true
 }
 
 filterResults(pokemon: string) {
   if(!pokemon){
     this.ricercaPokemon = this.pokemonList
+    this.display=this.ricercaPokemon
     return
   }
-  console.log(pokemon)
   this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.name.toLowerCase().includes(pokemon.toLowerCase()))
-  this.reset()
+  this.display = this.ricercaPokemon
 }
 
   pokemonList: PokemonInt[] = []
@@ -54,11 +54,7 @@ filterResults(pokemon: string) {
   display:PokemonInt[] = []
 
   constructor(){
-    this.pokemonList = this.pokemonSer.getAllPokemon()
-    this.ricercaPokemon= this.pokemonList
-    this.typeList = this.typeSer.getAllType()
-    this.display = this.ricercaPokemon.slice(0,20)
-    this.moreButton=true
+    this.reset()
   }
 
   showMore(){
