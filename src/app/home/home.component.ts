@@ -52,7 +52,7 @@ filterResults(pokemon: string) {
     return
   }
   this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.name.toLowerCase().includes(pokemon.toLowerCase()))
-  this.display = this.ricercaPokemon
+  this.display=this.ricercaPokemon.slice(0,20)
 }
 
   pokemonList: PokemonInt[] = []
