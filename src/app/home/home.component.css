@@ -11,13 +11,13 @@
   }
   
 app-pokemon{
-  background-image: linear-gradient(to bottom, #ee1515, #ff537d, #fa91c6, #e8c6ec, #f0f0f0);
+  background-image: linear-gradient(to bottom, #ee1515, #c30424, #970928, #6a1025, #3e111c, #616161, #8e8e8e, #bebebe, #f0f0f0);
   border-radius: 8px;
 }
 
 .container{
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   float: left;
   cursor: pointer;
 }

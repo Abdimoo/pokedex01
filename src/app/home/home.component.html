@@ -1,6 +1,8 @@
+<div class="contenitore" style="display: flex;flex-direction: column;">
+
 <section>
   <form class="search">
-    <input type="text" placeholder="Filtra per pokemon" (keydown)="filterResults(filter.value)" #filter/>
+    <input type="text" placeholder="Filtra per pokemon" (keypress)="filterResults(filter.value)" #filter/>
   </form>
   <br />
   <span class="roundy">
@@ -22,4 +24,5 @@
 <section class="results">
   <app-pokemon *ngFor="let pokemonVar of display" [pokemonInt]="pokemonVar"></app-pokemon>
 </section>
-<button style="display: block;" (click)="showMore()">Mostra più pokemon</button>
+<button style="display: block;" (click)="showMore()" *ngIf="moreButton">Mostra più pokemon</button>
+</div>

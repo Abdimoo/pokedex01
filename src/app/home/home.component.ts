@@ -18,14 +18,23 @@ import { TipiServiceService } from '../tipi-service.service';
 })
 export class HomeComponent {
   ricercaPokemon: PokemonInt[] = []
-
+  moreButton?:boolean
 filterType(tipo: string) {
   if(!tipo){
     this.ricercaPokemon = this.pokemonList
     return
   }
   this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.type.includes(tipo.toLowerCase()))
-  console.log(tipo)
+  if(this.ricercaPokemon.length<20){
+    this.moreButton=true
+  } else {
+    this.moreButton=false
+  }
+  //this.reset()
+}
+
+reset(){
+  this.display = this.ricercaPokemon.slice(0,20)
 }
 
 filterResults(pokemon: string) {
@@ -33,7 +42,9 @@ filterResults(pokemon: string) {
     this.ricercaPokemon = this.pokemonList
     return
   }
+  console.log(pokemon)
   this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.name.toLowerCase().includes(pokemon.toLowerCase()))
+  this.reset()
 }
 
   pokemonList: PokemonInt[] = []
@@ -47,12 +58,16 @@ filterResults(pokemon: string) {
     this.ricercaPokemon= this.pokemonList
     this.typeList = this.typeSer.getAllType()
     this.display = this.ricercaPokemon.slice(0,20)
+    this.moreButton=true
   }
 
   showMore(){
     let newLength = this.display.length + 20;
     if (newLength > this.ricercaPokemon.length) {
         newLength = this.ricercaPokemon.length
+        this.moreButton=false
+    } else {
+      this.moreButton=true
     }
      this.display = this.ricercaPokemon.slice(0, newLength);
   }
