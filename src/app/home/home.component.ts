@@ -60,14 +60,23 @@ reset(){
 
 //filter when a pokemon name is written
 filterResults(pokemon: string) {
-  if(!pokemon){
+  if(pokemon==""&&this.typeFilt==""){
     this.ricercaPokemon = this.pokemonList
     this.display=this.ricercaPokemon
     return
   }
+  if(this.typeFilt==""){
   this.ricercaPokemon = this.pokemonList.filter(
   PokemonInt => PokemonInt?.name.toLowerCase().startsWith(pokemon.toLowerCase()))
   this.display=this.ricercaPokemon.slice(0,20)
+    
+} else {
+    {
+      this.ricercaPokemon = this.pokemonList.filter(
+      PokemonInt => PokemonInt?.name.toLowerCase().startsWith(pokemon.toLowerCase())&&PokemonInt?.type.includes(this.typeFilt.toLowerCase()))
+      this.display=this.ricercaPokemon.slice(0,20)}
+  }
+  this.moreButton=true
 }
 
   constructor(){
