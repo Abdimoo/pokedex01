@@ -20,10 +20,6 @@ import { FormsModule } from '@angular/forms';
 
 
 export class HomeComponent {
-ngInOnit(typeFilt: string): any {
-  console.log(typeFilt==this.typeFilt)
-  return typeFilt==this.typeFilt
-}
   //var declaration
   ricercaPokemon: PokemonInt[] = []
   moreButton?:boolean
@@ -39,7 +35,6 @@ ngInOnit(typeFilt: string): any {
  //method for filter types 
 filterType(tipo: string) {
   this.typeFilt=tipo
-  console.log(this.typeFilt)
   this.filter=""
   this.selected
   if(!tipo){

@@ -9,7 +9,7 @@
     <div class="container">
       <div *ngFor="let typeVar of typeList">
         <a (click)="filterType(typeVar.id)">
-          <span class="type"  [style.--rgb]="typeVar.rgb" [ngClass]="{'selected' : ngInOnit(typeVar.id)}">
+          <span class="type"  [style.--rgb]="typeVar.rgb" [ngClass]="{'selected' : typeVar.id==typeFilt}">
             <img [alt]="typeVar.id+'icon.png'" [src]="'../assets/icons/'+typeVar.id+'.svg'" width="20" height="20"/>
             <span>
               <span style="color: #fff;padding-left: 10px;">{{typeVar.type}}</span>
