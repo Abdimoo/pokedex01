@@ -23,5 +23,7 @@
 <section class="results">
   <app-pokemon *ngFor="let pokemonVar of display" [pokemonInt]="pokemonVar" [style.--tipo]="getStyle(pokemonVar.type)"></app-pokemon>
 </section>
-<button style="display: block;" (click)="showMore()" *ngIf="moreButton">Mostra più pokemon</button>
+<div style="display: block;" [ngClass]="{'visibile':hideButton}">
+<button  (click)="showMore()">Mostra più pokemon</button>
+</div>
 </div>
