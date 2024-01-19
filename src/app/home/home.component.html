@@ -9,7 +9,7 @@
     <div class="container">
       <div *ngFor="let typeVar of typeList">
         <a (click)="filterType(typeVar.id)">
-          <span class="type" [style.background-image]="'linear-gradient(105deg,' + typeVar.rgb +' 30px,#5A5A5A 31px,#5A5A5A)'">
+          <span class="type" [style.--rgb]="typeVar.rgb">
             <img [alt]="typeVar.id+'icon.png'" [src]="'../assets/icons/'+typeVar.id+'.svg'" width="20" height="20"/>
             <span>
               <span style="color: #fff;padding-left: 10px;">{{typeVar.type}}</span>
@@ -21,7 +21,7 @@
   </span>
 </section>
 <section class="results">
-  <app-pokemon *ngFor="let pokemonVar of display" [pokemonInt]="pokemonVar"></app-pokemon>
+  <app-pokemon *ngFor="let pokemonVar of display" [pokemonInt]="pokemonVar" [style.--tipo]="getStyle(pokemonVar.type)"></app-pokemon>
 </section>
 <button style="display: block;" (click)="showMore()" *ngIf="moreButton">Mostra più pokemon</button>
 </div>

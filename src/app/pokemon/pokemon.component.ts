@@ -32,4 +32,5 @@ export class PokemonComponent {
     this.tipo =result
   }
 
+  
 }

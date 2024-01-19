@@ -20,10 +20,17 @@ import { FormsModule } from '@angular/forms';
 
 
 export class HomeComponent {
+  //var declaration
   ricercaPokemon: PokemonInt[] = []
   moreButton?:boolean
-filter: string=""
+  pokemonList: PokemonInt[] = []
+  pokemonSer: PokemonSerService = inject(PokemonSerService)
+  typeList:TypePokemon[]=[]
+  typeSer: TipiServiceService = inject(TipiServiceService)
+  display:PokemonInt[] = []
+  filter: string=""
 
+ //method for filter types 
 filterType(tipo: string) {
   this.filter=""
   if(!tipo){
@@ -36,6 +43,7 @@ filterType(tipo: string) {
   
 }
 
+//reset when press button reset
 reset(){
   this.pokemonList = this.pokemonSer.getAllPokemon()
     this.ricercaPokemon= this.pokemonList
@@ -45,6 +53,7 @@ reset(){
     this.filter=""
 }
 
+//filter when a pokemon name is written
 filterResults(pokemon: string) {
   if(!pokemon){
     this.ricercaPokemon = this.pokemonList
@@ -55,16 +64,11 @@ filterResults(pokemon: string) {
   this.display=this.ricercaPokemon.slice(0,20)
 }
 
-  pokemonList: PokemonInt[] = []
-  pokemonSer: PokemonSerService = inject(PokemonSerService)
-  typeList:TypePokemon[]=[]
-  typeSer: TipiServiceService = inject(TipiServiceService)
-  display:PokemonInt[] = []
-
   constructor(){
     this.reset()
   }
 
+  //show more button that show 20 more pokemon
   showMore(){
     let newLength = this.display.length + 20;
     if (newLength > this.ricercaPokemon.length) {
@@ -74,5 +78,15 @@ filterResults(pokemon: string) {
       this.moreButton=true
     }
      this.display = this.ricercaPokemon.slice(0, newLength);
+  }
+
+  getStyle(tipo:string[]){
+    let result = tipo.map(tipo=>{
+      return  this.typeList.find(t=>t.id == tipo)
+    })
+    if(result.length==1){
+      return "to bottom,"+ result[0]?.rgb+", #F8F8F8 "//+ result[0]?.rgb
+    }
+    return "to bottom,"+ result[0]?.rgb+","+ result[1]?.rgb
   }
 }
