@@ -20,6 +20,10 @@ import { FormsModule } from '@angular/forms';
 
 
 export class HomeComponent {
+ngInOnit(typeFilt: string): any {
+  console.log(typeFilt==this.typeFilt)
+  return typeFilt==this.typeFilt
+}
   //var declaration
   ricercaPokemon: PokemonInt[] = []
   moreButton?:boolean
@@ -28,11 +32,16 @@ export class HomeComponent {
   typeList:TypePokemon[]=[]
   typeSer: TipiServiceService = inject(TipiServiceService)
   display:PokemonInt[] = []
+  typeFilt:string=""
   filter: string=""
+  selected: string=""
 
  //method for filter types 
 filterType(tipo: string) {
+  this.typeFilt=tipo
+  console.log(this.typeFilt)
   this.filter=""
+  this.selected
   if(!tipo){
     this.ricercaPokemon = this.pokemonList
     return
@@ -40,7 +49,7 @@ filterType(tipo: string) {
   this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.type.includes(tipo.toLowerCase()))
   this.display=this.ricercaPokemon.slice(0,20)
   this.moreButton=true
-  
+  return
 }
 
 //reset when press button reset
@@ -51,6 +60,7 @@ reset(){
     this.display = this.ricercaPokemon.slice(0,20)
     this.moreButton=true
     this.filter=""
+    this.typeFilt=""
 }
 
 //filter when a pokemon name is written
@@ -60,7 +70,8 @@ filterResults(pokemon: string) {
     this.display=this.ricercaPokemon
     return
   }
-  this.ricercaPokemon = this.pokemonList.filter(PokemonInt => PokemonInt?.name.toLowerCase().includes(pokemon.toLowerCase()))
+  this.ricercaPokemon = this.pokemonList.filter(
+  PokemonInt => PokemonInt?.name.toLowerCase().startsWith(pokemon.toLowerCase()))
   this.display=this.ricercaPokemon.slice(0,20)
 }
 
@@ -89,4 +100,5 @@ filterResults(pokemon: string) {
     }
     return "to bottom,"+ result[0]?.rgb+","+ result[1]?.rgb
   }
+
 }

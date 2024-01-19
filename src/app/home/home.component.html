@@ -1,7 +1,7 @@
 <div class="contenitore" style="display: flex;flex-direction: column;">
 
 <section>
-  <input type="text" placeholder="Filtra per pokemon" (keydown)="filterResults(filter)" [(ngModel)]="filter"/>
+  <input type="text" placeholder="Filtra per pokemon" (keyup)="filterResults(filter)" [(ngModel)]="filter"/>
   <button type="reset" (click)="reset()">reset</button>
   <br />
   <span class="roundy">
@@ -9,7 +9,7 @@
     <div class="container">
       <div *ngFor="let typeVar of typeList">
         <a (click)="filterType(typeVar.id)">
-          <span class="type" [style.--rgb]="typeVar.rgb">
+          <span class="type"  [style.--rgb]="typeVar.rgb" [ngClass]="{'selected' : ngInOnit(typeVar.id)}">
             <img [alt]="typeVar.id+'icon.png'" [src]="'../assets/icons/'+typeVar.id+'.svg'" width="20" height="20"/>
             <span>
               <span style="color: #fff;padding-left: 10px;">{{typeVar.type}}</span>

@@ -83,3 +83,7 @@ img.type{
         grid-template-columns: 1fr;
     }    
   }
+
+  .selected{
+    background-color: linear-gradient(var(--rgb));
+  }
