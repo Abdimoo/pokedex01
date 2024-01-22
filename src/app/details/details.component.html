@@ -1,5 +1,5 @@
 <h2 class="listing-heading">Nome pokemon:{{ pokemon?.name }}</h2>
-<img alt="{{pokemon?.name}}_img" [src]="pokemon?.foto">
+<img alt="{{pokemon?.name}}_img" [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon?.id + '.png'" >
 <p class="listing-location">{{ pokemon?.id}}</p>
 
 <p>Tipo pokemon:{{pokemon?.type}}</p>

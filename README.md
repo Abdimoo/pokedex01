@@ -1,6 +1,7 @@
 # Pokedex01
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+the generated site is: https://pokedextest-kjz7.onrender.com/
 
 ## Development server
 

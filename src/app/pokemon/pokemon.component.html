@@ -1,6 +1,14 @@
 <section class="listing">
-    <a [routerLink]="['/pokemon',pokemonInt.id]"><img class="listing-photo" alt="pokemon" [src]="pokemonInt.foto" >
-    <h2 class="listing-heading">Pokemon: {{ pokemonInt.name }}</h2>
-    <p class="listing-location">{{ pokemonInt.id}}</p>
-    <p>Tipo pokemon:{{pokemonInt.type}}</p></a>
+    <a [routerLink]="['/pokemon',pokemonInt.id]"><img class="listing-photo" alt="pokemon" [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemonInt.id + '.png'" >
+        <h2 class="pokemon">{{ pokemonInt.name }}</h2>
+        <p class="id">#{{ pokemonInt.id}}</p>
+        <div *ngFor="let typeVar of tipo">
+            <span class="type" [style.background-image]="'linear-gradient(105deg,' + typeVar?.rgb +' 30px,#5A5A5A 31px,#5A5A5A)'">
+                <img [alt]="typeVar?.id" [src]="'../assets/icons/'+typeVar?.id+'.svg'" width="20" height="20"/>
+                <span>
+                <span style="color: #fff;padding-left: 10px;">{{typeVar?.type}}</span>
+                </span>
+            </span>
+        </div>
+    </a>
 </section>

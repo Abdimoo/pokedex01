@@ -6,6 +6,7 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { RouterModule } from '@angular/router';
 
 
+
 @Component({
     selector: 'app-root',
     standalone: true,

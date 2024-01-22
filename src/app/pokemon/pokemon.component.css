@@ -2,21 +2,22 @@
     background: var(--accent-color);
     border-radius: 30px;
     padding-bottom: 30px;
+    padding-left: 10px;
   }
-  .listing-heading {
-    color: var(--primary-color);
+  .pokemon {
+    color: white
   }
   .listing-photo {
-    /*height: 150px;
-    width: 250px;*/
+    height: 150px;
+    width: 150px;
     object-fit: cover;
     border-radius: 30px 30px 0 0;
     margin-left: auto;
     margin-right: auto;
     display: block;
   }
-  .listing-location::before {
-    content: url("/assets/location-pin.svg") / "";
+  .id {
+    color: white
   }
   
   section.listing a {
@@ -24,3 +25,20 @@
     text-decoration: none;
     color: var(--primary-color);
   }
+
+  .type{
+    background-color: #5A5A5A;
+    padding: 2px 2px 2px 4px;
+    margin: 2px;
+    width: 110px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    -icab-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: inline-flex;
+    white-space: nowrap;
+    align-items: center;
+          
+}
