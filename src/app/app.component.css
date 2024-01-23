@@ -6,5 +6,6 @@ img.title {
 }
 
 *{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /*font-family: Verdana, Geneva, Tahoma, sans-serif;*/
+    font-family: 'Press Start 2P', cursive;
 }
