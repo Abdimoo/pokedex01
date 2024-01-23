@@ -85,7 +85,7 @@ img.type{
   }
 
   .selected{
-    background-image: linear-gradient(to left,#1a1a1a 60px,var(--rgb));
+    background-image: linear-gradient(to left,#990000 60px,var(--rgb));
   }
 
   .visibile{

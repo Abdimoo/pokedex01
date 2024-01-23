@@ -8,12 +8,12 @@ const routeConfig: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Home page'
+    title: 'Pokèdex'
   },
   {
     path: 'pokemon/:id',
     component: DetailsComponent,
-    title: 'Home details'
+    title: 'Pokemon details'
   }
 ];
 

@@ -73,13 +73,7 @@ export class HomeComponent {
       this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
       PokemonInt?.type.includes(this.typeFilt1.toLowerCase())&&PokemonInt?.type.includes(this.typeFilt2.toLowerCase())
     );
-    } else {
-      alert("Non si possono inserire più di 2 tipi")
     }
-
-    /*this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
-      PokemonInt?.type.includes(this.typeFilt1.toLowerCase())
-    );*/
     this.display = this.ricercaPokemon.slice(0, 20);
     this.hideButton = false;
     return;
