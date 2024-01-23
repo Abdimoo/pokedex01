@@ -27,6 +27,10 @@ export class HomeComponent {
   typeFilt2: string = '';
   filter: string = '';
   selected: string = '';
+  hideFilter:boolean=true
+  height:string=""+0
+  hide=false
+  pHide="auto"
 
   //method for filter types
   filterType(tipo: string) {
@@ -150,6 +154,18 @@ export class HomeComponent {
       this.hideButton = true;
     } else {
       this.hideButton = false;
+    }
+  }
+
+  hideFilterMethod() {
+    this.hide=true
+    this.pHide=""+0
+    if (this.hideFilter==false) {
+      this.hideFilter = true;
+      this.height = ""+0;
+    } else if(this.hideFilter==true){
+      this.hideFilter = false;
+      this.height = "auto";
     }
   }
 }

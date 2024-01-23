@@ -107,13 +107,15 @@ img.type{
     background-color: #5A5A5A;
     padding: 2px 2px 2px 4px;
     margin: 2px;
-    width: 120px;
+    width: 135px;
+    font-size: 10px;
     border-radius: 15px;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     display: inline-flex;
     white-space: nowrap;
     align-items: center;
+    
 }
 .type:hover {
   background-image: linear-gradient(105deg,var(--rgb) 30px,#000000 31px,#000000);
@@ -142,3 +144,13 @@ img.type{
   .visibile{
     visibility: hidden;
   }
+
+  .filter-type{
+    cursor: pointer;
+  }
+
+  .-filter-type{
+    height: var(--height);
+  }
+
+  
