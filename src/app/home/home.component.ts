@@ -23,22 +23,63 @@ export class HomeComponent {
   typeList: TypePokemon[] = [];
   typeSer: TipiServiceService = inject(TipiServiceService);
   display: PokemonInt[] = [];
-  typeFilt: string = '';
+  typeFilt1: string = '';
+  typeFilt2: string = '';
   filter: string = '';
   selected: string = '';
 
   //method for filter types
   filterType(tipo: string) {
-    this.typeFilt = tipo;
-    this.filter = '';
     if (!tipo) {
       this.ricercaPokemon = this.pokemonList;
       this.hideButton = false;
       return;
     }
-    this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
-      PokemonInt?.type.includes(tipo.toLowerCase())
+    if(this.typeFilt2==tipo){
+      this.typeFilt2=''
+      this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
+      PokemonInt?.type.includes(this.typeFilt1.toLowerCase()))
+      this.display = this.ricercaPokemon.slice(0, 20);
+      this.hideButton = false;
+      return
+    }
+    if(this.typeFilt1==tipo){
+      if(this.typeFilt2==''){
+        this.typeFilt1=''
+        this.filter=''
+        this.ricercaPokemon = this.pokemonList;
+        this.hideButton = false;
+        this.display = this.ricercaPokemon.slice(0, 20);
+        return;
+      }
+      this.typeFilt1=this.typeFilt2
+      this.typeFilt2='';
+      this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
+      PokemonInt?.type.includes(this.typeFilt1.toLowerCase())
     );
+    this.hideButton = false;
+        this.display = this.ricercaPokemon.slice(0, 20);
+      return;
+    }
+    if(this.typeFilt1==""){
+      this.typeFilt1 = tipo;
+      this.filter = '';
+      this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
+      PokemonInt?.type.includes(this.typeFilt1.toLowerCase())
+    );
+    } else if(this.typeFilt2==""){
+      this.typeFilt2 = tipo;
+      this.filter = '';
+      this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
+      PokemonInt?.type.includes(this.typeFilt1.toLowerCase())&&PokemonInt?.type.includes(this.typeFilt2.toLowerCase())
+    );
+    } else {
+      alert("Non si possono inserire più di 2 tipi")
+    }
+
+    /*this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
+      PokemonInt?.type.includes(this.typeFilt1.toLowerCase())
+    );*/
     this.display = this.ricercaPokemon.slice(0, 20);
     this.hideButton = false;
     return;
@@ -52,32 +93,37 @@ export class HomeComponent {
     this.display = this.ricercaPokemon.slice(0, 20);
     this.hideButton = false;
     this.filter = '';
-    this.typeFilt = '';
+    this.typeFilt1 = '';
+    this.typeFilt2 = '';
   }
 
   //filter when a pokemon name is written
   filterResults(pokemon: string) {
-    if (pokemon == '' && this.typeFilt == '') {
+    if (pokemon == '' && this.typeFilt1 == '' && this.typeFilt2=='') {
       this.ricercaPokemon = this.pokemonList;
       this.display = this.ricercaPokemon;
       this.checkMore();
       return;
     }
-    if (this.typeFilt == '') {
+    if (this.typeFilt1 == '') {
       this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
         PokemonInt?.name.toLowerCase().startsWith(pokemon.toLowerCase())
       );
       this.display = this.ricercaPokemon.slice(0, 20);
+    } else if (this.typeFilt2==''){
+      this.ricercaPokemon = this.pokemonList.filter(
+        (PokemonInt) =>
+          PokemonInt?.name.toLowerCase().startsWith(pokemon.toLowerCase()) &&
+          PokemonInt?.type.includes(this.typeFilt1.toLowerCase())
+      );
     } else {
-      {
-        this.ricercaPokemon = this.pokemonList.filter(
-          (PokemonInt) =>
-            PokemonInt?.name.toLowerCase().startsWith(pokemon.toLowerCase()) &&
-            PokemonInt?.type.includes(this.typeFilt.toLowerCase())
-        );
-        this.display = this.ricercaPokemon.slice(0, 20);
-      }
+      this.ricercaPokemon = this.pokemonList.filter(
+        (PokemonInt) =>
+          PokemonInt?.name.toLowerCase().startsWith(pokemon.toLowerCase()) &&
+          PokemonInt?.type.includes(this.typeFilt1.toLowerCase())&&PokemonInt?.type.includes(this.typeFilt2.toLowerCase())
+      );
     }
+    this.display = this.ricercaPokemon.slice(0, 20);
     this.checkMore()
   }
 
