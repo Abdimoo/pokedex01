@@ -29,8 +29,6 @@ export class HomeComponent {
   selected: string = '';
   hideFilter:boolean=true
   height:string=""+0
-  hide=false
-  pHide="auto"
 
   //method for filter types
   filterType(tipo: string) {
@@ -158,8 +156,6 @@ export class HomeComponent {
   }
 
   hideFilterMethod() {
-    this.hide=true
-    this.pHide=""+0
     if (this.hideFilter==false) {
       this.hideFilter = true;
       this.height = ""+0;

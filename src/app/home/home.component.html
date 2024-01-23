@@ -12,8 +12,8 @@
 
     <br />
     <span class="roundy">
-      <h2 class="filter-type" (click)="hideFilterMethod()">Filtro pokemon tramite tipo</h2>
-      <p [ngClass]="{ visibile: hide ,height: pHide}">Premere il testo in alto per visualizzare i tipi</p>
+      <h2 class="filter-type">Filtro pokemon per tipo</h2>
+      <img class="arrow-type" src="../assets/icons/down-arrow-svgrepo-com.png" alt="Freccia in basso" (click)="hideFilterMethod()">
       <div class="-filter-type" [ngClass]="{ visibile: hideFilter }" [style.--height]="height">
         <h3>Selezionare massimo 2 tipi</h3>
         <div class="container">

@@ -153,4 +153,7 @@ img.type{
     height: var(--height);
   }
 
-  
+  .arrow-type{
+    height: 50px;
+    width: 50px;
+  }
