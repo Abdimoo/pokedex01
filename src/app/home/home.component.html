@@ -1,29 +1,53 @@
-<div class="contenitore" style="display: flex;flex-direction: column;">
-
-<section>
-  <input type="text" placeholder="Filtra per pokemon" (keyup)="filterResults(filter)" [(ngModel)]="filter"/>
-  <button type="reset" (click)="reset()">reset</button>
-  <br />
-  <span class="roundy">
-    <span class="title">Filtro pokemon tramite tipo</span>
-    <div class="container">
-      <div *ngFor="let typeVar of typeList">
-        <a (click)="filterType(typeVar.id)">
-          <span class="type"  [style.--rgb]="typeVar.rgb" [ngClass]="{'selected' : typeVar.id==typeFilt1 || typeVar.id==typeFilt2}">
-            <img [alt]="typeVar.id+'icon.png'" [src]="'../assets/icons/'+typeVar.id+'.svg'" width="20" height="20"/>
-            <span>
-              <span style="color: #fff;padding-left: 10px;">{{typeVar.type}}</span>
-            </span>
-          </span>
-        </a>
-      </div>
+<div class="contenitore" style="display: flex; flex-direction: column">
+  <section>
+    <div class="pokemon-container">
+      <input
+        type="text"
+        placeholder="Filtra per pokemon"
+        (keyup)="filterResults(filter)"
+        [(ngModel)]="filter"
+      />
+      <button type="reset" class="reset" (click)="reset()">reset</button>
     </div>
-  </span>
-</section>
-<section class="results">
-  <app-pokemon *ngFor="let pokemonVar of display" [pokemonInt]="pokemonVar" [style.--tipo]="getStyle(pokemonVar.type)"></app-pokemon>
-</section>
-<div style="display: block;" [ngClass]="{'visibile':hideButton}">
-<button  (click)="showMore()">Mostra più pokemon</button>
-</div>
+
+    <br />
+    <span class="roundy">
+      <span class="title">Filtro pokemon tramite tipo</span>
+      <div class="container">
+        <div *ngFor="let typeVar of typeList">
+          <a (click)="filterType(typeVar.id)">
+            <span
+              class="type"
+              [style.--rgb]="typeVar.rgb"
+              [ngClass]="{
+                selected: typeVar.id == typeFilt1 || typeVar.id == typeFilt2
+              }"
+            >
+              <img
+                [alt]="typeVar.id + 'icon.png'"
+                [src]="'../assets/icons/' + typeVar.id + '.svg'"
+                width="20"
+                height="20"
+              />
+              <span>
+                <span style="color: #fff; padding-left: 10px">{{
+                  typeVar.type
+                }}</span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </span>
+  </section>
+  <section class="results">
+    <app-pokemon
+      *ngFor="let pokemonVar of display"
+      [pokemonInt]="pokemonVar"
+      [style.--tipo]="getStyle(pokemonVar.type)"
+    ></app-pokemon>
+  </section>
+  <div class="pokemon-div-more-button" [ngClass]="{ visibile: hideButton }">
+    <button (click)="showMore()" class="pokemon-show-more-button">Mostra più pokemon</button>
+  </div>
 </div>

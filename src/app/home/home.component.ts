@@ -40,7 +40,7 @@ export class HomeComponent {
       this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
       PokemonInt?.type.includes(this.typeFilt1.toLowerCase()))
       this.display = this.ricercaPokemon.slice(0, 20);
-      this.hideButton = false;
+      this.checkMore()
       return
     }
     if(this.typeFilt1==tipo){
@@ -48,8 +48,8 @@ export class HomeComponent {
         this.typeFilt1=''
         this.filter=''
         this.ricercaPokemon = this.pokemonList;
-        this.hideButton = false;
         this.display = this.ricercaPokemon.slice(0, 20);
+        this.checkMore()
         return;
       }
       this.typeFilt1=this.typeFilt2
@@ -57,8 +57,8 @@ export class HomeComponent {
       this.ricercaPokemon = this.pokemonList.filter((PokemonInt) =>
       PokemonInt?.type.includes(this.typeFilt1.toLowerCase())
     );
-    this.hideButton = false;
-        this.display = this.ricercaPokemon.slice(0, 20);
+      this.display = this.ricercaPokemon.slice(0, 20);
+      this.checkMore()
       return;
     }
     if(this.typeFilt1==""){
@@ -75,7 +75,7 @@ export class HomeComponent {
     );
     }
     this.display = this.ricercaPokemon.slice(0, 20);
-    this.hideButton = false;
+    this.checkMore()
     return;
   }
 

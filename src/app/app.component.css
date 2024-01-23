@@ -4,3 +4,7 @@ img.title {
   margin-right: auto;
   width: 50%;
 }
+
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

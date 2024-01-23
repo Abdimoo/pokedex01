@@ -8,11 +8,26 @@
     border-radius: 8px;
     border: 2px solid black;
     padding: 10px;
+    background-image: linear-gradient(to right,#FFBB5C,#FF9B50,#dd8c40,#FF9B50,#FFBB5C);
   }
   
 app-pokemon{
   background-image: linear-gradient(var(--tipo));
   border-radius: 8px;
+}
+
+.reset{
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
 }
 
 .container{
@@ -39,27 +54,62 @@ img.type{
   text-align: center;
 }
 
-  input[type="text"] {
+  input[type="text"] {/*
     border: solid 5px rgba(16, 9, 9, 0.043);
     padding: 10px;
     border-radius: 8px;
     margin-right: 4px;
     display: inline-block;
-    width: 30%;
+    width: 30%;*/
+    background-color: #f2f2f2;
+  border: none;
+  color: #333;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
+  .pokemon-show-more-button {
+    background-color: #f2c14e;
+    border: none;
+    color: #333;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .pokemon-div-more-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .pokemon-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .type{
     background-image: linear-gradient(105deg,var(--rgb) 30px,#5a5a5a 31px,#5a5a5a);
     background-color: #5A5A5A;
     padding: 2px 2px 2px 4px;
     margin: 2px;
-    width: 110px;
+    width: 120px;
     border-radius: 15px;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
-    -khtml-border-radius: 15px;
-    -icab-border-radius: 15px;
-    -o-border-radius: 15px;
     display: inline-flex;
     white-space: nowrap;
     align-items: center;
