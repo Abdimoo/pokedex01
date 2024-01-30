@@ -4,14 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PokemonSerService {
-  created: boolean=false;
+  created: boolean = false;
 
-  constructor(private httpClient:HttpClient) { }
-
-  pokemonList:PokemonInt[] = []
+  constructor(private httpClient: HttpClient) {}
 
   /*pokemonList: PokemonInt[]=[
     { "id": 1, "name": "Bulbasaur", "type": ["grass","poison"] },
@@ -2034,18 +2032,48 @@ export class PokemonSerService {
     
     { "id": 1010, "name": "Iron Leaves", "type": ["grass","psychic"] }
   ]*/
-  
 
-getAllPokemon(): PokemonInt[]{
-  return this.pokemonList
+  pokemonList: PokemonInt[] = [];
+  getAllPokemon(): PokemonInt[] {
+    return this.pokemonList;
+  }
+
+  getPokemonById(id: number): PokemonInt | undefined {
+    return this.pokemonList.find((pokemonInt) => pokemonInt.id === id);
+  }
+
+apiPokemon(){
+return this.httpClient.get<string[]>('https://ex.traction.one/pokedex/pokemon')
+}
+apiTypes(id:string){
+  return this.httpClient
+  .get<any>('https://pokeapi.co/api/v2/pokemon/' + id)
 }
 
-getPokemonById(id: number): PokemonInt | undefined{
-  return this.pokemonList.find(pokemonInt => pokemonInt.id === id)
+  /*genPokemon() {
+    console.log('passo da qui');
+    this.httpClient
+      .get<string[]>('https://ex.traction.one/pokedex/pokemon')
+      .subscribe((data) => {
+        let array = [];
+        for (let id in data) {
+          let type: string[] = [];
+          let p!: PokemonInt;
+          this.httpClient
+            .get<any>('https://pokeapi.co/api/v2/pokemon/' + id)
+            .subscribe((data) => {
+              let dato = data;
+              type.push(dato.types[0].type.name);
+              if (dato.types.length == 2) {
+                type.push(dato.types[1].type.name);
+              }
+            });
+          p = { id: Number(id), name: data[id], type: type };
+          array.push(p);
+        }
+        this.pokemonList = array;
+        console.log(this.pokemonList);
+      });
+    console.log('fatto');
+  }*/
 }
-
-
-
-}
-
-

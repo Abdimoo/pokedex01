@@ -33,12 +33,12 @@ export class HomeComponent {
 
   ngOnInit(): void {
     console.log("passo da qui")
-    this.httpClient.get<string[]>('https://ex.traction.one/pokedex/pokemon').subscribe((data) => {
+    this.pokemonSer.apiPokemon().subscribe((data) => {
       let array= [];
       for (let id in data) {
         let type:string[] = []
         let p!:PokemonInt
-        this.httpClient.get<any>("https://pokeapi.co/api/v2/pokemon/"+id).subscribe((data) =>{
+        this.pokemonSer.apiTypes(id).subscribe((data) =>{
           let dato = data
           type.push(dato.types[0].type.name)
           if(dato.types.length==2){
