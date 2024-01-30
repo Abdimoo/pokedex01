@@ -4,6 +4,8 @@ import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from "./home/home.component";
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { RouterModule } from '@angular/router';
+import { PokemonInt } from './pokemon-int';
+import { PokemonSerService } from './pokemon-ser.service';
 
 
 

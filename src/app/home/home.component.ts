@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { TypePokemon } from '../type-pokemon';
 import { TipiServiceService } from '../tipi-service.service';
 import { FormsModule } from '@angular/forms';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +30,32 @@ export class HomeComponent {
   selected: string = '';
   hideFilter:boolean=true
   height:string=""+0
+
+  ngOnInit(): void {
+    console.log("passo da qui")
+    this.httpClient.get<string[]>('https://ex.traction.one/pokedex/pokemon').subscribe((data) => {
+      let array= [];
+      for (let id in data) {
+        let type:string[] = []
+        let p!:PokemonInt
+        this.httpClient.get<any>("https://pokeapi.co/api/v2/pokemon/"+id).subscribe((data) =>{
+          let dato = data
+          type.push(dato.types[0].type.name)
+          if(dato.types.length==2){
+            type.push(dato.types[1].type.name)
+          }
+          
+        }
+          
+        )
+        p = {id:Number(id),name:data[id],type:type}        
+        array.push(p);
+      }
+      this.pokemonList=array
+      console.log(this.pokemonList)
+    });
+    console.log("fatto");
+  }
 
   //method for filter types
   filterType(tipo: string) {
@@ -123,7 +150,7 @@ export class HomeComponent {
     this.checkMore()
   }
 
-  constructor() {
+  constructor(private httpClient:HttpClient) {
     this.reset();
   }
 
