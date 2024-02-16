@@ -1,5 +1,5 @@
 <section class="listing">
-    <a [routerLink]="['/pokemon',pokemonInt.id]"><img class="listing-photo" alt="pokemon" [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemonInt.id + '.png'" >
+    <a [routerLink]="['/pokemon',pokemonInt.id]"><img class="listing-photo" alt="pokemon" [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemonInt.id + '.png'">
         <h2 class="pokemon">{{ pokemonInt.name }}</h2>
         <p class="id">#{{ pokemonInt.id}}</p>
         <div *ngFor="let typeVar of tipo">

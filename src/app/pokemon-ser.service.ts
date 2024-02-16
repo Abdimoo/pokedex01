@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { PokemonInt } from './pokemon-int';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonSerService {
   created: boolean = false;
+  
 
   constructor(private httpClient: HttpClient) {}
 
@@ -1554,7 +1555,7 @@ export class PokemonSerService {
     
     { "id": 771, "name": "Pyukumuku", "type": ["water"] },
     
-    { "id": 772, "name": "Type: Null", "type": ["normal"] },
+    { "id": 772, "name": "Tipo Zero", "type": ["normal"] },
     
     { "id": 773, "name": "Silvally", "type": ["normal"] },
     
@@ -1978,29 +1979,29 @@ export class PokemonSerService {
     
     { "id": 983, "name": "Kingambit", "type": ["dark","steel"] },
     
-    { "id": 984, "name": "Great Tusk", "type": ["ground","fighting"] },
+    { "id": 984, "name": "Grandizanne", "type": ["ground","fighting"] },
     
-    { "id": 985, "name": "Scream Tail", "type": ["fairy","psychic"] },
+    { "id": 985, "name": "Codaurlante", "type": ["fairy","psychic"] },
     
-    { "id": 986, "name": "Brute Bonnet", "type": ["grass","dark"] },
+    { "id": 986, "name": "Fungofurioso", "type": ["grass","dark"] },
     
-    { "id": 987, "name": "Flutter Mane", "type": ["ghost","fairy"] },
+    { "id": 987, "name": "Crinealato", "type": ["ghost","fairy"] },
     
-    { "id": 988, "name": "Slither Wing", "type": ["bug","fighting"] },
+    { "id": 988, "name": "Alirasenti", "type": ["bug","fighting"] },
     
-    { "id": 989, "name": "Sandy Shocks", "type": ["electric","ground"] },
+    { "id": 989, "name": "Peldisabbia", "type": ["electric","ground"] },
     
-    { "id": 990, "name": "Iron Treads", "type": ["ground","steel"] },
+    { "id": 990, "name": "Solcoferreo", "type": ["ground","steel"] },
     
-    { "id": 991, "name": "Iron Bundle", "type": ["ice","water"] },
+    { "id": 991, "name": "Saccoferreo", "type": ["ice","water"] },
     
-    { "id": 992, "name": "Iron Hands", "type": ["fighting","electric"] },
+    { "id": 992, "name": "Manoferrea", "type": ["fighting","electric"] },
     
-    { "id": 993, "name": "Iron Jugulis", "type": ["dark","flying"] },
+    { "id": 993, "name": "Colloferreo", "type": ["dark","flying"] },
     
-    { "id": 994, "name": "Iron Moth", "type": ["fire","poison"] },
+    { "id": 994, "name": "Falenaferrea", "type": ["fire","poison"] },
     
-    { "id": 995, "name": "Iron Thorns", "type": ["rock","electric"] },
+    { "id": 995, "name": "Spineferree", "type": ["rock","electric"] },
     
     { "id": 996, "name": "Frigibax", "type": ["dragon","ice"] },
     
@@ -2020,17 +2021,17 @@ export class PokemonSerService {
     
     { "id": 1004, "name": "Chi-Yu", "type": ["dark","fire"] },
     
-    { "id": 1005, "name": "Roaring Moon", "type": ["dragon","dark"] },
+    { "id": 1005, "name": "Lunaruggente", "type": ["dragon","dark"] },
     
-    { "id": 1006, "name": "Iron Valiant", "type": ["fairy","fighting"] },
+    { "id": 1006, "name": "Eroeferreo", "type": ["fairy","fighting"] },
     
     { "id": 1007, "name": "Koraidon", "type": ["fighting","dragon"] },
     
     { "id": 1008, "name": "Miraidon", "type": ["electric","dragon"] },
     
-    { "id": 1009, "name": "Walking Wake", "type": ["water","dragon"] },
+    { "id": 1009, "name": "Acquacrespe", "type": ["water","dragon"] },
     
-    { "id": 1010, "name": "Iron Leaves", "type": ["grass","psychic"] }
+    { "id": 1010, "name": "Fogliaferrea", "type": ["grass","psychic"] }
   ]*/
 
   pokemonList: PokemonInt[] = [];
@@ -2042,38 +2043,68 @@ export class PokemonSerService {
     return this.pokemonList.find((pokemonInt) => pokemonInt.id === id);
   }
 
-apiPokemon(){
-return this.httpClient.get<string[]>('https://ex.traction.one/pokedex/pokemon')
+apiPokemon(){  
+  return this.httpClient.get<string[]>('https://ex.traction.one/pokedex/pokemon')
 }
 apiTypes(id:string){
   return this.httpClient
   .get<any>('https://pokeapi.co/api/v2/pokemon/' + id)
 }
 
-  /*genPokemon() {
-    console.log('passo da qui');
-    this.httpClient
-      .get<string[]>('https://ex.traction.one/pokedex/pokemon')
-      .subscribe((data) => {
-        let array = [];
-        for (let id in data) {
-          let type: string[] = [];
-          let p!: PokemonInt;
-          this.httpClient
-            .get<any>('https://pokeapi.co/api/v2/pokemon/' + id)
-            .subscribe((data) => {
-              let dato = data;
-              type.push(dato.types[0].type.name);
-              if (dato.types.length == 2) {
-                type.push(dato.types[1].type.name);
-              }
-            });
-          p = { id: Number(id), name: data[id], type: type };
-          array.push(p);
+ genPokemon() {
+  return this.apiPokemon().pipe(
+      map(
+        (data) => {
+          let idPokemon:number
+          for (let id in data){
+            idPokemon=+id
+            let name = data[idPokemon]
+            let type:string[] = ["fire"]
+            let p:PokemonInt = {id:idPokemon,type:type,name:name}
+            this.pokemonList.push(p)
+            if(idPokemon>5)
+            break;
+          }
+          return this.pokemonList
         }
-        this.pokemonList = array;
-        console.log(this.pokemonList);
-      });
-    console.log('fatto');
-  }*/
+      )
+    )
+    
+    /*.pipe(
+        switchMap(
+          (data) => {
+            console.log("primo switchmap");
+            
+            let array = [];
+            for (let id in data) {
+              let type: string[] = [];
+              let p!: PokemonInt;
+              this.httpClient
+                .get<any>('https://pokeapi.co/api/v2/pokemon/' + id)
+                .pipe(
+                  switchMap(
+                    (data) => {
+                      let dato = data;
+                      type.push(dato.types[0].type.name);
+                      if (dato.types.length == 2) {
+                        type.push(dato.types[1].type.name);
+                      }
+
+                      console.log("dentro il tipo");
+                      
+                      return dato
+                    }
+                  )
+                )
+              p = { id: Number(id), name: data[id], type: type };
+              array.push(p);
+
+              console.log("pushing "+id);
+            }
+            this.pokemonList = array;
+            console.log(this.pokemonList);
+            return array
+          })
+      )*/
+  }
 }

@@ -1,6 +1,6 @@
 import { PokemonSerService } from './../pokemon-ser.service';
 import { PokemonInt } from './../pokemon-int';
-import { Component, NgModule, inject } from '@angular/core';
+import { Component, NgModule, OnInit, inject } from '@angular/core';
 import { PokemonComponent } from '../pokemon/pokemon.component';
 import { CommonModule } from '@angular/common';
 import { TypePokemon } from '../type-pokemon';
@@ -15,7 +15,7 @@ import { HttpBackend, HttpClient } from '@angular/common/http';
   styleUrl: './home.component.css',
   imports: [PokemonComponent, CommonModule, FormsModule],
 })
-export class HomeComponent {
+export class HomeComponent{
   //var declaration
   ricercaPokemon: PokemonInt[] = [];
   hideButton: boolean = false;
@@ -30,32 +30,6 @@ export class HomeComponent {
   selected: string = '';
   hideFilter:boolean=true
   height:string=""+0
-
-  ngOnInit(): void {
-    console.log("passo da qui")
-    this.pokemonSer.apiPokemon().subscribe((data) => {
-      let array= [];
-      for (let id in data) {
-        let type:string[] = []
-        let p!:PokemonInt
-        this.pokemonSer.apiTypes(id).subscribe((data) =>{
-          let dato = data
-          type.push(dato.types[0].type.name)
-          if(dato.types.length==2){
-            type.push(dato.types[1].type.name)
-          }
-          
-        }
-          
-        )
-        p = {id:Number(id),name:data[id],type:type}        
-        array.push(p);
-      }
-      this.pokemonList=array
-      console.log(this.pokemonList)
-    });
-    console.log("fatto");
-  }
 
   //method for filter types
   filterType(tipo: string) {
@@ -151,7 +125,7 @@ export class HomeComponent {
   }
 
   constructor(private httpClient:HttpClient) {
-    this.reset();
+    this.reset();    
   }
 
   //show more button that show 20 more pokemon

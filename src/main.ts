@@ -4,6 +4,7 @@ import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import routeConfig from './app/app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { PokemonSerService } from './app/pokemon-ser.service';
 
 bootstrapApplication(AppComponent,
   {
