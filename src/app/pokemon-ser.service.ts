@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PokemonInt } from './pokemon-int';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map, switchMap } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class PokemonSerService {
   created: boolean = false;
   
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private testJson: HttpClient) {}
 
   /*pokemonList: PokemonInt[]=[
     { "id": 1, "name": "Bulbasaur", "type": ["grass","poison"] },
@@ -2043,68 +2043,39 @@ export class PokemonSerService {
     return this.pokemonList.find((pokemonInt) => pokemonInt.id === id);
   }
 
-apiPokemon(){  
-  return this.httpClient.get<string[]>('https://ex.traction.one/pokedex/pokemon')
+apiPokemonNum(){  
+  return this.httpClient.get<any>('https://ex.traction.one/pokedex/pokemon')
 }
-apiTypes(id:string){
+apiPokemonDet(id:number){
   return this.httpClient
   .get<any>('https://pokeapi.co/api/v2/pokemon/' + id)
 }
 
- genPokemon() {
-  return this.apiPokemon().pipe(
-      map(
-        (data) => {
-          let idPokemon:number
-          for (let id in data){
-            idPokemon=+id
-            let name = data[idPokemon]
-            let type:string[] = ["fire"]
-            let p:PokemonInt = {id:idPokemon,type:type,name:name}
-            this.pokemonList.push(p)
-            if(idPokemon>5)
-            break;
-          }
-          return this.pokemonList
-        }
-      )
+ genNumPok() {
+  return this.apiPokemonNum().pipe(
+    map(
+      pokemon => {
+        return Object.keys(pokemon).length
+      }
     )
-    
-    /*.pipe(
-        switchMap(
-          (data) => {
-            console.log("primo switchmap");
-            
-            let array = [];
-            for (let id in data) {
-              let type: string[] = [];
-              let p!: PokemonInt;
-              this.httpClient
-                .get<any>('https://pokeapi.co/api/v2/pokemon/' + id)
-                .pipe(
-                  switchMap(
-                    (data) => {
-                      let dato = data;
-                      type.push(dato.types[0].type.name);
-                      if (dato.types.length == 2) {
-                        type.push(dato.types[1].type.name);
-                      }
+  )
+  
+  }
 
-                      console.log("dentro il tipo");
-                      
-                      return dato
-                    }
-                  )
-                )
-              p = { id: Number(id), name: data[id], type: type };
-              array.push(p);
-
-              console.log("pushing "+id);
-            }
-            this.pokemonList = array;
-            console.log(this.pokemonList);
-            return array
-          })
-      )*/
+  genPokemon(count:number){
+    return this.apiPokemonDet(count)
+      .pipe(
+        map(
+          (pokemon) => {
+            let type:string[]=[]
+            type.push(pokemon.types[0].type.name);
+            if (pokemon.types.length == 2) {
+              type.push(pokemon.types[1].type.name);
+            }            
+            let p:PokemonInt = {id:pokemon.id,type:type,name:pokemon.name}            
+            return p
+          }
+        )
+      )
   }
 }

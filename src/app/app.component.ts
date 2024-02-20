@@ -6,7 +6,6 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { RouterModule } from '@angular/router';
 import { PokemonInt } from './pokemon-int';
 import { PokemonSerService } from './pokemon-ser.service';
-import { HttpClient } from '@angular/common/http';
 
 
 
@@ -22,8 +21,14 @@ export class AppComponent {
   serv:PokemonSerService=inject(PokemonSerService);
   list:PokemonInt[]=[]
   ngOnInit(): void {
-    let http!:HttpClient
-    this.serv.genPokemon().subscribe((dato) => this.serv.pokemonList=dato)
+    let count!:number
+    let i=1
+    this.serv.genNumPok().subscribe(num => count = num)
+    for(i;i<=1025;i++){
+      this.serv.genPokemon(i).subscribe(pokemon=>{
+        this.serv.pokemonList.push(pokemon)
+      })
+    }
     console.log(this.serv.pokemonList);
     
   }

@@ -15,7 +15,7 @@ import { HttpBackend, HttpClient } from '@angular/common/http';
   styleUrl: './home.component.css',
   imports: [PokemonComponent, CommonModule, FormsModule],
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit{
   //var declaration
   ricercaPokemon: PokemonInt[] = [];
   hideButton: boolean = false;
@@ -125,7 +125,10 @@ export class HomeComponent{
   }
 
   constructor(private httpClient:HttpClient) {
-    this.reset();    
+  }
+
+  ngOnInit(): void {
+    this.reset()
   }
 
   //show more button that show 20 more pokemon
