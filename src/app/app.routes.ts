@@ -1,12 +1,17 @@
 import { Routes } from '@angular/router';
-import { PokemonComponent } from './pokemon/pokemon.component';
 import { DetailsComponent } from './details/details.component';
 import { HomeComponent } from './home/home.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 const routeConfig: Routes = [
   {
-    path: '',
+    path:'',
+    component: LoaderComponent,
+    title:'loading...'
+  },
+  {
+    path: 'home',
     component: HomeComponent,
     title: 'Pokèdex'
   },

@@ -2034,7 +2034,7 @@ export class PokemonSerService {
     { "id": 1010, "name": "Fogliaferrea", "type": ["grass","psychic"] }
   ]*/
 
-  pokemonList: PokemonInt[] = [];
+  pokemonList: PokemonInt[] = []
   getAllPokemon(): PokemonInt[] {
     return this.pokemonList;
   }
@@ -2044,7 +2044,7 @@ export class PokemonSerService {
   }
 
 apiPokemonNum(){  
-  return this.httpClient.get<any>('https://ex.traction.one/pokedex/pokemon')
+  return this.httpClient.get<any>('https://pokeapi.co/api/v2/pokemon-species')
 }
 apiPokemonDet(id:number){
   return this.httpClient
@@ -2055,7 +2055,7 @@ apiPokemonDet(id:number){
   return this.apiPokemonNum().pipe(
     map(
       pokemon => {
-        return Object.keys(pokemon).length
+        return pokemon.count
       }
     )
   )
@@ -2077,5 +2077,18 @@ apiPokemonDet(id:number){
           }
         )
       )
+  }
+
+  pokemonSort(lista:PokemonInt[]){
+    let listaFiltrata:PokemonInt[] = lista.sort((p1,p2)=>{
+      if (p1.id < p2.id) {
+        return 1;
+      }
+      if (p1.id > p2.id) {
+        return -1;
+      }
+      return 0;
+    })
+    return listaFiltrata
   }
 }

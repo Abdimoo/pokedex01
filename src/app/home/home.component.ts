@@ -128,7 +128,7 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.reset()
+      this.reset()
   }
 
   //show more button that show 20 more pokemon
